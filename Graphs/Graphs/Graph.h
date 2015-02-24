@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include "AIE.h"
 
 struct Edge;
 
@@ -10,6 +12,7 @@ class Node
 {
 	typedef std::vector<Edge> EdgeList;
 public:
+	Node();
 	Node(int a_iNum);
 	int NodeNumber;
 	EdgeList g_nEdges;
@@ -32,6 +35,10 @@ public:
 	void AddNode(Node* g_nNode);
 	void RemoveNode(Node* g_nNode);
 	void AddEdge(Node Start, Node End);
+	void FollowNodePath(Node* N);
+	void PrintNodes();
+	void PrintNeighbors(Node N);
+	Node* CurrentNode;
 	NodeList g_nNodes;
 };
 

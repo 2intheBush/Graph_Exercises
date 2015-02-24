@@ -2,8 +2,12 @@
 
 Graph g(6);
 
-int main()
+
+
+int main(int argc, char* argv[])
 {
+	Initialise(1024, 720, false, "My Awesome Graph");
+	SetBackgroundColour(SColour(0, 100, 200, 50));
 
 	//Edge from 0 to 1
 	Edge e1;
@@ -53,6 +57,21 @@ int main()
 	e8.g_nEnd = g.g_nNodes[3];
 	g.g_nNodes[5]->g_nEdges.push_back(e8);
 
+	g.PrintNodes();
+	std::cout << "Select a node to follow." << std::endl;
 
-	system("Pause");
+	do
+	{
+		ClearScreen();
+
+
+		g.CurrentNode = g.g_nNodes[1];
+		g.PrintNeighbors(*g.g_nNodes[g.CurrentNode->NodeNumber]);
+
+
+	} while (!FrameworkUpdate());
+	g.~Graph();
+	
+	Shutdown();
+	return 0;
 }
